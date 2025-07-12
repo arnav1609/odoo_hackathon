@@ -5,8 +5,14 @@ import { Search, ChevronLeft, ChevronRight } from "lucide-react";
 import UserCard from "@/components/UserCard";
 import { Skill } from "@/lib/enums";
 import { UserType } from "@/lib/types";
+import { useUser } from "@clerk/nextjs";
 
 const SkillSwapHomepage = () => {
+  const { user, isSignedIn, isLoaded } = useUser();
+  console.log(user, isSignedIn, isLoaded);
+
+  if (!isLoaded) return <p>Loading...</p>;
+
   const users: UserType[] = [
     {
       id: 1,
