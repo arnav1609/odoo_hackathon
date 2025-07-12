@@ -1,5 +1,5 @@
 "use client";
-
+import Link from 'next/link';
 import React, { useEffect, useState } from "react";
 import { Search, ChevronLeft, ChevronRight } from "lucide-react";
 import UserCard from "@/components/UserCard";
@@ -25,12 +25,12 @@ const SkillSwapHomepage = () => {
   const mockUsers: UserType[] = [
     {
       id: 1,
-      name: "Marc Demo",
+      name: "Alex Thompson",
       avatar: "/api/placeholder/80/80",
       skillsOffered: [Skill.JAVASCRIPT, Skill.NEXTJS],
       skillsWanted: [Skill.CODING, Skill.GRAPHIC_DESIGNER],
-      rating: 3.9,
-      available: true,
+      rating: 4.9,
+      available: false,
     },
     {
       id: 2,
@@ -89,7 +89,7 @@ const SkillSwapHomepage = () => {
       {/* Header */}
       <header className="border-b border-gray-800 p-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Skill Swap Platform</h1>
+          <Link href="/profile"><h1 className="text-2xl font-bold">Skill Swap Platform</h1></Link>
           
           {isSignedIn ? (
             <div className="flex items-center gap-4">
@@ -107,8 +107,8 @@ const SkillSwapHomepage = () => {
             <div className="flex gap-2">
               <SignInButton mode="modal">
                 <Button className="bg-purple-600 hover:bg-purple-700 text-white">
-  Sign In
-</Button>
+                  Sign In
+                </Button>
               </SignInButton>
               <SignUpButton mode="modal">
                 <Button className="bg-teal-600 hover:bg-teal-700">

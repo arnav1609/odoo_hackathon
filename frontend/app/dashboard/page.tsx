@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { ArrowLeft, Calendar, Clock, MapPin, User, Star, MessageCircle, Check, X, Filter, Search, ChevronLeft, ChevronRight, Tag } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -228,7 +229,7 @@ const SkillSwapAcceptReject = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <button className="p-2 hover:bg-slate-700 rounded-full transition-colors">
-                  <ArrowLeft className="w-5 h-5 text-slate-300" />
+                 <Link href="/"><ArrowLeft className="w-5 h-5 text-slate-300" /></Link>
                 </button>
                 <h1 className="text-xl font-semibold text-white">Skill Swap Requests</h1>
                 <span className="px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm">
@@ -658,17 +659,17 @@ const SkillSwapAcceptReject = () => {
        
                    {/* Message */}
                    <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700">
-                     <h3 className="text-lg font-semibold text-white mb-4">Send Message</h3>
+                     <h3 className="text-lg font-semibold text-emerald-400 mb-4">Send Message</h3>
                      
                      <div className="space-y-4">
                        <textarea
                          value={message}
                          onChange={(e) => setMessage(e.target.value)}
                          placeholder="Add a personal message (optional)"
-                         className="w-full bg-slate-700 text-white placeholder-slate-400 rounded-xl p-3 h-24 resize-none border border-slate-600 focus:border-teal-500 focus:outline-none"
+                         className="w-full bg-slate-700 text-emerald-400 placeholder-slate-400 rounded-xl p-3 h-24 resize-none border border-slate-600 focus:border-teal-500 focus:outline-none"
                        />
                        
-                       <button className="w-full bg-slate-700 hover:bg-slate-600 text-white font-medium py-2 px-4 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2">
+                       <button className="w-full bg-slate-700 hover:bg-slate-600 text-black font-medium py-2 px-4 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2">
                          <MessageCircle className="w-4 h-4" />
                          <span>Send Message</span>
                        </button>

@@ -1,6 +1,6 @@
 "use client";
 
-
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { ArrowLeft, MapPin, Star, Calendar, MessageCircle, UserPlus,  Settings, Award, BookOpen, Users } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -71,7 +71,7 @@ function ProfilePage({
       <div className="bg-gray-800 border-b border-gray-700">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <ArrowLeft className="h-6 w-6 text-gray-400 cursor-pointer hover:text-white transition-colors" />
+            <Link href="/"><ArrowLeft className="h-6 w-6 text-gray-400 cursor-pointer hover:text-white transition-colors" /></Link>
             <h1 className="text-xl font-semibold">Skill Swap Platform</h1>
           </div>
           <Button variant="outline" className="bg-gray-700 border-gray-600 text-white hover:bg-gray-600">
@@ -124,7 +124,7 @@ function ProfilePage({
                     <UserPlus className="h-4 w-4 mr-2" />
                     {isFollowing ? 'Following' : 'Follow'}
                   </Button>
-                  <Button variant="outline" className="border-gray-600 text-white hover:bg-gray-700">
+                  <Button variant="outline" className="border-gray-600 text-black hover:bg-gray-700">
                     <MessageCircle className="h-4 w-4 mr-2" />
                     Message
                   </Button>

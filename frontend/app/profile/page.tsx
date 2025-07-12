@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { 
   User, 
@@ -171,13 +172,13 @@ const UserProfilePage: React.FC<ProfilePageProps> = ({ user: initialUser }) => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <button className="text-gray-400 hover:text-white transition-colors">
-              <ArrowLeft className="w-6 h-6" />
+            <Link href="/"><ArrowLeft className="w-6 h-6" /></Link>
             </button>
             <h1 className="text-2xl font-bold">User Profile</h1>
           </div>
           <div className="flex items-center space-x-4">
             <button className="text-gray-400 hover:text-white transition-colors">
-              <Settings className="w-6 h-6" />
+              <Link href="/dashboard"><Settings className="w-6 h-6" /></Link>
             </button>
             <button className="border border-gray-600 px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
               Message
