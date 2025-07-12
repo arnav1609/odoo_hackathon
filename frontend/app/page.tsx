@@ -1,5 +1,4 @@
 "use client";
-<<<<<<< HEAD
 
 import React, { useState } from "react";
 import { Search, ChevronLeft, ChevronRight } from "lucide-react";
