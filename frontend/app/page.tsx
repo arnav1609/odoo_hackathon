@@ -1,21 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Search, ChevronLeft, ChevronRight } from "lucide-react";
 import UserCard from "@/components/UserCard";
+import { Skill } from "@/lib/enums";
+import { UserType } from "@/lib/types";
 
 const SkillSwapHomepage = () => {
-  const [availability, setAvailability] = useState("Available");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const users = [
+  const users: UserType[] = [
     {
       id: 1,
       name: "Marc Demo",
       avatar: "/api/placeholder/80/80",
-      skillsOffered: ["Java Script", "Python"],
-      skillsWanted: ["Coding", "Graphic designer"],
+      skillsOffered: [Skill.JAVASCRIPT, Skill.NEXTJS],
+      skillsWanted: [Skill.CODING, Skill.GRAPHIC_DESIGNER],
       rating: 3.9,
       available: true,
     },
@@ -23,8 +21,8 @@ const SkillSwapHomepage = () => {
       id: 2,
       name: "Michelle",
       avatar: "/api/placeholder/80/80",
-      skillsOffered: ["Java Script", "Python"],
-      skillsWanted: ["Cooking", "Graphic designer"],
+      skillsOffered: [Skill.REACTJS, Skill.PYTHON],
+      skillsWanted: [Skill.COOKING, Skill.GRAPHIC_DESIGNER],
       rating: 2.5,
       available: true,
     },
@@ -32,12 +30,36 @@ const SkillSwapHomepage = () => {
       id: 3,
       name: "Joe Willis",
       avatar: "/api/placeholder/80/80",
-      skillsOffered: ["Java Script", "Python"],
-      skillsWanted: ["Cooking", "Graphic designer"],
+      skillsOffered: [Skill.JAVASCRIPT, Skill.REACT_NATIVE],
+      skillsWanted: [Skill.COOKING, Skill.GRAPHIC_DESIGNER],
       rating: 4.0,
       available: true,
     },
   ];
+
+  const [searchUsers, setSearchUsers] = useState<UserType[]>(users);
+  const [availability, setAvailability] = useState("Available");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(
+    function () {
+      function showSearchUsers() {
+        const filteredUsers = users.filter((user) => {
+          const skill = searchTerm.toLowerCase().trim();
+
+          const allSkills = [...user.skillsOffered, ...user.skillsWanted];
+
+          return allSkills.some((s) => s.toLowerCase().includes(skill));
+        });
+
+        setSearchUsers(filteredUsers);
+      }
+
+      showSearchUsers();
+    },
+    [searchUsers, searchTerm, users]
+  );
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -81,7 +103,7 @@ const SkillSwapHomepage = () => {
 
         {/* User Cards */}
         <div className="space-y-6">
-          {users.map((user) => (
+          {searchUsers.map((user) => (
             <UserCard key={user.id} user={user} />
           ))}
         </div>
